@@ -1,0 +1,26 @@
+.loader {
+  animation-fill-mode: forwards;
+  animation: loading 1s linear infinite;
+  background-image: linear-gradient(
+    to right,
+    #d8d8d8 8%,
+    #f4f4f4 18%,
+    #d8d8d8 33%
+  );
+  background-size: 400px;
+  border-radius: 5px;
+  color: transparent;
+  display: inline-block;
+  height: 0.5em;
+  width: 3em;
+  position: relative;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}

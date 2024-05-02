@@ -1,0 +1,92 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - prettier
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 13
+  sourceType: module
+plugins: ["@typescript-eslint", "import", "react", "unused-imports"]
+settings:
+  react:
+    version: "detect"
+rules:
+  {
+    "@typescript-eslint/member-ordering":
+      [
+        "error",
+        {
+          "classes":
+            {
+              memberTypes:
+                [
+                  "public-field",
+                  "private-field",
+                  "constructor",
+                  ["get", "set"],
+                  "public-method",
+                  "private-method",
+                ],
+              "order": "alphabetically",
+            },
+          "default": { "order": "alphabetically" },
+        },
+      ],
+    "@typescript-eslint/no-magic-numbers":
+      ["error", { "ignore": [-1, 0, 1, 100], "ignoreEnums": true }],
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-unused-vars":
+      [
+        "error",
+        {
+          "args": "after-used",
+          "destructuredArrayIgnorePattern": "^_",
+          "ignoreRestSiblings": true,
+        },
+      ],
+    "@typescript-eslint/semi": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/order":
+      [
+        "error",
+        {
+          "alphabetize": { caseInsensitive: true, order: "asc" },
+          "groups":
+            ["builtin", "external", "internal", "parent", "sibling", "index"],
+          "newlines-between": "always",
+        },
+      ],
+    "jsx-quotes": ["error", "prefer-double"],
+    "padding-line-between-statements":
+      ["error", { "blankLine": "always", "next": "return", "prev": "*" }],
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "react/function-component-definition":
+      [
+        "error",
+        {
+          "namedComponents": "arrow-function",
+          "unnamedComponents": "arrow-function",
+        },
+      ],
+    "react/jsx-curly-brace-presence": "error",
+    "react/sort-default-props": "error",
+    "react/jsx-sort-props":
+      ["error", { "callbacksLast": true, "shorthandFirst": true }],
+    "react/prop-types": "off",
+    "react/self-closing-comp": "error",
+    "sort-imports":
+      [
+        "error",
+        {
+          "ignoreDeclarationSort": true,
+          "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
+        },
+      ],
+    "unused-imports/no-unused-imports": "error",
+  }
